@@ -25,10 +25,10 @@ Solutions for [Codility Lessons](https://app.codility.com/programmers/lessons/) 
   * MaxProductOfThree
   * Triangle
 * Stacks and Queues
- * Brackets
- * Fish
- * Nesting
- * StoneWall
+  * Brackets
+  * Fish
+  * Nesting
+  * StoneWall
 * Leader
   * Dominator
 
