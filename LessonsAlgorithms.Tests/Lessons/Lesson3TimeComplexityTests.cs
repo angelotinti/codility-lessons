@@ -1,5 +1,4 @@
-﻿using LessonsAlgorithms;
-using System;
+﻿using LessonsAlgorithms.Lessons;
 using Xunit;
 
 namespace AlgorithmExercises.Lessons

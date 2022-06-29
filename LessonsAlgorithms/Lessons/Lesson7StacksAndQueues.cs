@@ -41,7 +41,7 @@
 
             return downstream.Count + upstream.Count;
         }
-        #region
+        #endregion
 
         #region Nesting
         public int Nesting(string S)

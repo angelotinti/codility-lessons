@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using LessonsAlgorithms.Lessons;
+using Xunit;
 
 namespace LessonsAlgorithms.Tests.Lessons
 {

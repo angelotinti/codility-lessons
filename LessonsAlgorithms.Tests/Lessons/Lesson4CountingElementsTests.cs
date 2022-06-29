@@ -1,6 +1,4 @@
-﻿using LessonsAlgorithms;
-using System;
-using System.Collections.Generic;
+﻿using LessonsAlgorithms.Lessons;
 using Xunit;
 
 namespace AlgorithmExercises.Lessons
