@@ -1,4 +1,4 @@
-# codility-lessons
+# Codility Lessons
 
 Solutions for [Codility Lessons](https://app.codility.com/programmers/lessons/) using C#. They all score 100% on both, correctness and performance. There's room from improvements and feedbacks. Feel free to contact me on my e-mail.
 
@@ -24,6 +24,7 @@ Solutions for [Codility Lessons](https://app.codility.com/programmers/lessons/) 
   * Distinct
   * MaxProductOfThree
   * Triangle
+  * NumberOfDiscIntersections
 * Stacks and Queues
   * Brackets
   * Fish
@@ -31,6 +32,7 @@ Solutions for [Codility Lessons](https://app.codility.com/programmers/lessons/) 
   * StoneWall
 * Leader
   * Dominator
+  * EquiLeader
 
 I will update in the near feature with the solutions for the other lessons.<br>
 Planning to add comments in the future explaining the algorithms to help others with their studies.
