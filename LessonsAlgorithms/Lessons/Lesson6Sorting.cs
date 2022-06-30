@@ -150,6 +150,56 @@
         }
         #endregion
 
+        #region NumberOfDiscIntersections
+        public int NumberOfDiscIntersections(int[] A)
+        {
+            if (A.Length <= 1)
+            {
+                return 0;
+            }
+
+            var totalOpen = 0;
+            var discsOpen = new int[A.Length];
+            var discsClose = new int[A.Length];
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                var start = (long)i - A[i];
+                if (start < 0)
+                {
+                    totalOpen++;
+                }
+                else
+                {
+                    discsOpen[start]++;
+                }
+                var end = (long)i + A[i] >= A.Length ? A.Length - 1 : i + A[i];
+                discsClose[end]++;
+            }
+
+            Func<int, long> calcCombinations = x =>
+            {
+                return x * (x - 1) / 2;
+            };
+
+            var intersections = calcCombinations(totalOpen);
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                intersections += discsOpen[i] * totalOpen;
+                intersections += calcCombinations(discsOpen[i]);
+                if (intersections > 10000000)
+                {
+                    return -1;
+                }
+                totalOpen += discsOpen[i];
+                totalOpen -= discsClose[i];
+            }
+
+            return (int)intersections;
+        }
+        #endregion
+
         private int SegregateInts(int[] array)
         {
             var j = 0;

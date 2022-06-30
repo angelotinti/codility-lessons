@@ -1,4 +1,5 @@
 ﻿using LessonsAlgorithms.Lessons;
+using System;
 using Xunit;
 
 namespace LessonsAlgorithms.Tests.Lessons
@@ -40,6 +41,22 @@ namespace LessonsAlgorithms.Tests.Lessons
             var triangular = new Lesson6Sorting().Triangle(A);
 
             Assert.Equal(expectedTriangular, triangular);
+        }
+
+        /**
+         * https://app.codility.com/programmers/lessons/6-sorting/number_of_disc_intersections/
+         */
+        [Theory]
+        [InlineData(new int[] { 1, 5, 2, 1, 4, 0 }, 11)]
+        [InlineData(new int[] { 1, 1, 1 }, 3)]
+        [InlineData(new int[] { 1, 0, 1, 0, 1 }, 6)]
+        [InlineData(new int[] { 0, 1, 0, 1, 0 }, 5)]
+        [InlineData(new int[] { 3, 3, 3, 5, 1, 2 }, 15)]
+        public void NumberOfDiscIntersectionTest(int[] A, int expectedIntersections)
+        {
+            var intersections = new Lesson6Sorting().NumberOfDiscIntersections(A);
+
+            Assert.Equal(expectedIntersections, intersections);
         }
     }
 }

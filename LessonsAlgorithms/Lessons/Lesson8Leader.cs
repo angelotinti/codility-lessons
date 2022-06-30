@@ -55,6 +55,8 @@
                 return 0;
             }
 
+            wholeArrayCount = wholeArrayCount.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
             var firstSequenceCount = new Dictionary<int, int>();
 
             for (var i = 0; i < A.Length - 1; i++)
@@ -65,39 +67,41 @@
                 }
                 firstSequenceCount[A[i]]++;
 
+                firstSequenceCount = firstSequenceCount.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+
                 wholeArrayCount[A[i]]--;
                 if (wholeArrayCount[A[i]] == 0)
                 {
                     wholeArrayCount.Remove(A[i]);
                 }
 
-                var firstSequenceLeader = 0;
-                var firstLeaderFound = false;
-                if (firstSequenceCount.Count == 1)
-                {
-                    firstSequenceLeader = firstSequenceCount.First().Key;
-                    firstLeaderFound = true;
-                }
-                else if (firstSequenceCount.ElementAt(0).Value != firstSequenceCount.ElementAt(1).Value
-                    && firstSequenceCount.ElementAt(0).Value > (double)(i + 1) / 2)
-                {
-                    firstSequenceLeader = firstSequenceCount.ElementAt(0).Key;
-                    firstLeaderFound = true;
-                }
+                var firstSequenceLeader = firstSequenceCount.First().Key;
+                var firstLeaderFound = firstSequenceCount.ElementAt(0).Value > (double)(i + 1) / 2;
+                //if (firstSequenceCount.Count == 1)
+                //{
+                //    firstSequenceLeader = firstSequenceCount.First().Key;
+                //    firstLeaderFound = true;
+                //}
+                //else if (firstSequenceCount.ElementAt(0).Value != firstSequenceCount.ElementAt(1).Value
+                //    && firstSequenceCount.ElementAt(0).Value > (double)(i + 1) / 2)
+                //{
+                //    firstSequenceLeader = firstSequenceCount.ElementAt(0).Key;
+                //    firstLeaderFound = true;
+                //}
 
-                var secondSequenceLeader = 0;
-                var secondLeaderFound = false;
-                if (wholeArrayCount.Count == 1)
-                {
-                    secondSequenceLeader = wholeArrayCount.First().Key;
-                    secondLeaderFound = true;
-                }
-                else if (wholeArrayCount.ElementAt(0).Value != wholeArrayCount.ElementAt(1).Value
-                    && wholeArrayCount.ElementAt(0).Value > (double)(A.Length - i - 1) / 2)
-                {
-                    secondSequenceLeader = wholeArrayCount.ElementAt(0).Key;
-                    secondLeaderFound = true;
-                }
+                var secondSequenceLeader = wholeArrayCount.First().Key;
+                var secondLeaderFound = wholeArrayCount.ElementAt(0).Value > (double)(A.Length - i - 1) / 2;
+                //if (wholeArrayCount.Count == 1)
+                //{
+                //    secondSequenceLeader = wholeArrayCount.First().Key;
+                //    secondLeaderFound = true;
+                //}
+                //else if (wholeArrayCount.ElementAt(0).Value != wholeArrayCount.ElementAt(1).Value
+                //    && wholeArrayCount.ElementAt(0).Value > (double)(A.Length - i - 1) / 2)
+                //{
+                //    secondSequenceLeader = wholeArrayCount.ElementAt(0).Key;
+                //    secondLeaderFound = true;
+                //}
 
                 if (firstLeaderFound && secondLeaderFound && secondSequenceLeader == firstSequenceLeader)
                 {

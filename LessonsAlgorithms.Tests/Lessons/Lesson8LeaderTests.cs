@@ -1,5 +1,6 @@
 ﻿using LessonsAlgorithms.Lessons;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace AlgorithmExercises.Lessons
@@ -31,11 +32,31 @@ namespace AlgorithmExercises.Lessons
         [InlineData(new[] { 0, 0 }, 1)]
         [InlineData(new[] { 1, 2, 3, 4, 5 }, 0)]
         [InlineData(new[] { 4, 4, 2, 5, 3, 4, 4, 4 }, 3)]
+        [MemberData(nameof(GetEquiLeadersData))]
         public void EquiLeaderTest(int[] A, int expectedEquiLeaders)
         {
             var equiLeaders = new Lesson8Leader().EquiLeader(A);
 
             Assert.Equal(expectedEquiLeaders, equiLeaders);
+        }
+
+        public static IEnumerable<object[]> GetEquiLeadersData()
+        {
+            var random = new Random();
+            var randomArray = new int[50];
+
+            for (int i = 0; i < randomArray.Length; i++)
+            {
+                randomArray[i] = random.Next(1000);
+            }
+
+            var dataArray = new int[300];
+
+            Array.Fill(dataArray, int.MinValue);
+            Array.Copy(randomArray, 0, dataArray, 0, 50);
+            Array.Copy(randomArray, 0, dataArray, 250, 50);
+
+            yield return new object[] { dataArray, 99 };
         }
     }
 }
