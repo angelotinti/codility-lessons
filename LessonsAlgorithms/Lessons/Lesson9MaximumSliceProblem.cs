@@ -55,8 +55,10 @@ namespace LessonsAlgorithms.Lessons
                 return A[0];
             }
 
-            var maxSliceSum = int.MinValue;
-            var sliceSum = int.MinValue;
+            var minValue = 1000001 * -1;
+
+            var maxSliceSum = minValue;
+            var sliceSum = minValue;
 
             for (int i = 0; i < A.Length; i++)
             {
@@ -69,9 +71,9 @@ namespace LessonsAlgorithms.Lessons
                     }
                     continue;
                 }
-                if (sliceSum + A[i] > sliceSum)
+                else if (sliceSum + A[i] > sliceSum)
                 {
-                    if (sliceSum == int.MinValue)
+                    if (sliceSum == minValue)
                     {
                         sliceSum = A[i];
                     }
@@ -85,18 +87,16 @@ namespace LessonsAlgorithms.Lessons
                     }
                     continue;
                 }
-                if (i < A.Length - 1)
+                else if (sliceSum + A[i] > 0)
                 {
-                    if (sliceSum + A[i] + A[i + 1] > sliceSum)
+                    sliceSum += A[i];
+                    if (sliceSum > maxSliceSum)
                     {
-                        sliceSum += A[i];
-                        continue;
+                        maxSliceSum = sliceSum;
                     }
-                    else
-                    {
-                        sliceSum = int.MinValue;
-                    }
+                    continue;
                 }
+                sliceSum = minValue;
             }
 
             return maxSliceSum;
