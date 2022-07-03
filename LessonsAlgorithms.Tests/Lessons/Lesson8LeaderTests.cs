@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace AlgorithmExercises.Lessons
+namespace LessonsAlgorithms.Tests.Lessons
 {
     public class Lesson8LeaderTests
     {

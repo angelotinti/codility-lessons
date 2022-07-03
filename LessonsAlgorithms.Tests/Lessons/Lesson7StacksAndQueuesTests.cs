@@ -1,7 +1,7 @@
 ﻿using LessonsAlgorithms.Lessons;
 using Xunit;
 
-namespace AlgorithmExercises.Lessons
+namespace LessonsAlgorithms.Tests.Lessons
 {
     public class Lesson7StacksAndQueuesTests
     {
