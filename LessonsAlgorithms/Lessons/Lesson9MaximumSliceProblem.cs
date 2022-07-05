@@ -101,5 +101,30 @@ namespace LessonsAlgorithms.Lessons
 
             return maxSliceSum;
         }
+
+        public int MaxDoubleSliceSum(int[] A)
+        {
+            var maxEndingAt = new int[A.Length];
+            var maxStartingAt = new int[A.Length];
+
+            for (int i = 1; i < A.Length - 1; i++)
+            {
+                maxEndingAt[i] = Math.Max(0, maxEndingAt[i - 1] + A[i]);
+            }
+
+            for (int i = A.Length - 2; i > 0; i--)
+            {
+                maxStartingAt[i] = Math.Max(0, maxStartingAt[i + 1] + A[i]);
+            }
+
+            var maxSum = 0;
+
+            for (int i = 1; i < A.Length - 1; i++)
+            {
+                maxSum = Math.Max(maxSum, maxEndingAt[i - 1] + maxStartingAt[i + 1]);
+            }
+
+            return maxSum;
+        }
     }
 }

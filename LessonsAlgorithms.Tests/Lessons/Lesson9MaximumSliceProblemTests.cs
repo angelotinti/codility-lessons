@@ -1,4 +1,5 @@
 ﻿using LessonsAlgorithms.Lessons;
+using System;
 using Xunit;
 
 namespace LessonsAlgorithms.Tests.Lessons
@@ -26,6 +27,19 @@ namespace LessonsAlgorithms.Tests.Lessons
             var maxSliceSum = new Lesson9MaximumSliceProblem().MaxSliceSum(A);
 
             Assert.Equal(expectedMaxSliceSum, maxSliceSum);
+        }
+
+        [Theory]
+        [InlineData(new int[] { 3, 2, 6, -1, 4, 5, -1, 2 }, 17)]
+        [InlineData(new int[] { 1, 2, 3, 4 }, 3)]
+        [InlineData(new int[] { 1, 2, 3, 4, 5 }, 7)]
+        [InlineData(new int[] { 5, 8, 9 }, 0)]
+        [InlineData(new int[] { 5, 17, 0, 3 }, 17)]
+        public void MaxDoubleSliceSumTest(int[] A, int expectedMaximalSum)
+        {
+            var maximalSum = new Lesson9MaximumSliceProblem().MaxDoubleSliceSum(A);
+
+            Assert.Equal(expectedMaximalSum, maximalSum);
         }
     }
 }
